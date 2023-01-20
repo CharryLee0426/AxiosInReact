@@ -43,3 +43,10 @@ If you're interested in my demo project and want to learn some experience, you h
     // index.js
     import 'semantic-ui-css/semantic.min.css'
     ```
+
+5. change the demo page to semantic basic page
+
+    1. remove all content in return of function app();
+    2. remove App.css and logo.svg;
+    3. remove their imports in app.js;
+    4. build a very basic page using semantic ui components;
