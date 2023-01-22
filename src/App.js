@@ -1,6 +1,5 @@
 import { Container, Segment } from "semantic-ui-react";
-import TestView from "./TestView";
-import Welcome from "./welcome";
+import TestView from "./components/TestView";
 
 
 function App() {
