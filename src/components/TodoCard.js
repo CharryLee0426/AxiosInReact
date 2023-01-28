@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./static/img/logo512.png";    // picture also need to be imported as a component
+import Logo from "../static/img/logo512.png";    // picture also need to be imported as a component
 import { Button, Card, Placeholder, Image } from "semantic-ui-react";
 
 const TodoCard = (props) => {
