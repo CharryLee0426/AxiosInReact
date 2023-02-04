@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Grid } from "semantic-ui-react";
-import PlaceholderCard from "./PlaceholderCard";
+import NewCard from "./NewCard";
+import PlaceholderCardView from "./PlaceholderCardView";
 import TodoCard from "./TodoCard";
 
 class todoItem {
@@ -36,26 +37,7 @@ const TestView = () => {
     if (!data.length) {
         return (
             <Container>
-                <Grid stackable columns={3}>
-                    <Grid.Column>
-                        <PlaceholderCard />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <PlaceholderCard />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <PlaceholderCard />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <PlaceholderCard />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <PlaceholderCard />
-                    </Grid.Column>
-                    <Grid.Column>
-                        <PlaceholderCard />
-                    </Grid.Column>
-                </Grid>
+                <PlaceholderCardView />
             </Container>
         )
     } else {
@@ -69,6 +51,10 @@ const TestView = () => {
                             </Grid.Column>
                         ))
                     }
+
+                    <Grid.Column>
+                        <NewCard />
+                    </Grid.Column>
                 </Grid>
             </Container>
         )
