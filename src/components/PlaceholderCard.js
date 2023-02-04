@@ -21,12 +21,6 @@ const PlaceholderCard = () => {
                     </Placeholder.Paragraph>
                 </Placeholder>
             </Card.Content>
-
-            {/* extra content placeholder */}
-            <Card.Content extra>
-                <Button disabled primary>OK</Button>
-                <Button disabled>Cancel</Button>
-            </Card.Content>
         </Card>
     )
 }
