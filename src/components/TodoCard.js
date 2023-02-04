@@ -8,7 +8,9 @@ const TodoCard = (props) => {
             <Image src={Logo} wrapped />
 
             <Card.Content>
-                <Card.Header>{ props.title }</Card.Header>
+                <Card.Header>
+                    { props.title.length > 20 ? props.title.slice(0, 20) + '...' : props.title }
+                </Card.Header>
                 <Card.Meta>{ props.completed ? '✅' : '❌' }</Card.Meta>
                 {/* <Card.Header>Header</Card.Header>
                 <Card.Meta>✅</Card.Meta> */}
@@ -21,11 +23,6 @@ const TodoCard = (props) => {
                     <Placeholder.Line length="medium" />
                     </Placeholder.Paragraph>
                 </Placeholder>
-            </Card.Content>
-
-            <Card.Content extra>
-                <Button primary>Done</Button>
-                <Button>Cancel</Button>
             </Card.Content>
         </Card>
     )
