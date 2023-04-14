@@ -1,9 +1,41 @@
+import axios from "axios";
 import { useState } from "react"
 import { Button, Card, Form, Input, Label, Modal, Placeholder } from "semantic-ui-react"
 
-const NewCard = () => {
+// example todo class
+class todo {
+    constructor(userId, id, title, completed) {
+        this.userId = userId;
+        this.id = id;
+        this.title = title;
+        this.completed = completed;
+    }
+}
+
+const NewCard = (props) => {
     const [open, setOpen] = useState(false);
     const [completed, setCompleted] = useState(false);
+    const [title, setTitle] = useState('');
+
+    const handleChange = (e) => {
+        setTitle(e.target.value);
+    }
+
+    const handleAdditem = () => {
+        var newItem = new todo(233, 322, title, completed)
+        
+        // update this new Item to server (only a simulation)
+        axios.post('https://jsonplaceholder.typicode.com/todos', JSON.stringify(newItem))
+        .then(function (response) {
+            console.log(response.status)
+            console.log(response.data)
+        })
+
+        props.addItem(newItem)
+
+        setTitle('')
+        setOpen(false)
+    }
 
     return (
         <Card>
@@ -21,7 +53,8 @@ const NewCard = () => {
                         <Form>
                             <Form.Field inline>
                                 <Label>Title</Label>
-                                <Input placeholder='Title you want'></Input>
+                                <Input placeholder='Title you want' onChange={handleChange}></Input>
+                                <p>You typed: {title}</p>
                             </Form.Field>
                             <Form.Field inline>
                                 <Label>Completed 🤨</Label>
@@ -30,7 +63,7 @@ const NewCard = () => {
                                     <Form.Radio checked={completed === false} label='❌' onChange={() => setCompleted(false)} />
                                 </Form.Group>
                             </Form.Field>
-                            <Form.Button>OK</Form.Button>
+                            <Form.Button onClick={handleAdditem}>OK</Form.Button>
                         </Form>
                     </Modal.Content>
 
