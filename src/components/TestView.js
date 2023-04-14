@@ -5,18 +5,10 @@ import NewCard from "./NewCard";
 import PlaceholderCardView from "./PlaceholderCardView";
 import TodoCard from "./TodoCard";
 
-class todoItem {
-    constructor(userId, id, title, completed) {
-        this.userId = userId;
-        this.id = id;
-        this.title = title;
-        this.completed = completed;
-    }
-}
-
 // this component is for test only
 const TestView = () => {
     const [data, setData] = useState([]);
+    
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/todos', {
             params: {
@@ -33,6 +25,10 @@ const TestView = () => {
             console.log('statements in then block will be executed anyway')
         })
     }, [])
+
+    function addItem(item) {
+        setData(prevData => [...prevData, item])
+    }
 
     if (!data.length) {
         return (
@@ -53,7 +49,7 @@ const TestView = () => {
                     }
 
                     <Grid.Column>
-                        <NewCard />
+                        <NewCard addItem={addItem}/>
                     </Grid.Column>
                 </Grid>
             </Container>
